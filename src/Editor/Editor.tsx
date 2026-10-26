@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import styles from './Editor.module.css';
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/theme/darcula.css';
-import 'codemirror/mode/javascript/javascript';
-import { Controlled as ControlledEditor } from 'react-codemirror2';
+import CodeMirror from '@uiw/react-codemirror';
+import { javascript } from '@codemirror/lang-javascript';
+import { EditorView } from '@codemirror/view';
+import { darcula } from '@uiw/codemirror-theme-darcula';
+
+const extensions = [javascript(), EditorView.lineWrapping];
 
 interface TextEditor {
     toggled: boolean;
@@ -40,17 +42,13 @@ function Editor(this: any, props:TextEditor) {
                 </button>
             </div>
             <div className={`${styles.editorbody} h-100`}>
-                <ControlledEditor
+                <CodeMirror
                 value={props.value}
-                onBeforeChange={(editor, data, value)=>props.onChange(value)} 
+                onChange={(value)=>props.onChange(value)}
                 onFocus={() => props.setRun(false)}
-                options={{
-                    lineWrapping: true,
-                    lint: true,
-                    mode: 'javascript',
-                    lineNumbers: true,
-                    theme: 'darcula'
-                }}/>
+                height="100%"
+                theme={darcula}
+                extensions={extensions}/>
             </div>
         </div>
     );

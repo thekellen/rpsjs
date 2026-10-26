@@ -23,7 +23,7 @@
 }
 
 .editorbody > :global(div),
-:global(.CodeMirror) {
+:global(.cm-editor) {
   height: 100%!important;
   border-bottom-left-radius: .5rem;
   border-bottom-right-radius: .5rem;
