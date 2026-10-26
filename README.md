@@ -1,3 +1,3 @@
 TODO:  Explain how this happened...
 
-https://kellensoft.github.io/rpsjs/
+https://thekellen.github.io/rpsjs/
